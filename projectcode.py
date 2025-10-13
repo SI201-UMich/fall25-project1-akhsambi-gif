@@ -41,9 +41,13 @@ def variability_variance(list_dicts, quant_var):
     variance_final = total_square / (count - 1) 
     return variance_final
 
-#Fourth function, standard deviation calculation that calls on the variance computation function 3 
+#Fourth function, standard deviation calculation that calls on the variance computation function 3; equation for reference = square root of found variance 
 
+def standard_deviation(list_dicts, quant_var): 
+    variance = variability_variance(list_dicts, quant_var)
+    standard_dev_result = math.sqrt(variance)
+    return standard_dev_result
 
+#bill_length function with standard deviation, variance, and mean
 
-
-
+def bill_length_summary(list_dicts):

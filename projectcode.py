@@ -17,6 +17,22 @@ def read_penguin_data(filename):
             list_dicts.append(row)
     return list_dicts
 
+#Second function, arthmetic mean calculation (measure of center)
+
+def center_mean(list_dicts, quant_var): 
+    total = 0 
+    count = 0 
+    for row in list_dicts: 
+        total += row[quant_var]
+        count += 1 
+    mean = total/count 
+    return mean 
+
+#Third function, variance calculation that calls on the mean computation function 2 
+
+#Fourth function, standard deviation calculation that calls on the variance computation function 3 
+
+
 
 
 

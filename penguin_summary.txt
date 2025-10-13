@@ -1,0 +1,19 @@
+Penguin Data Set Center and Variability Summary
+
+Bill Length (in millimeters) Mean, Variance, Standard Deviation 
+bill_length_mean: 43.93607038123169 
+bill_length_variance: 29.826136277384848 
+bill_length_sd: 5.461330998702134 
+Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of 43.93607038123169 is the center of the distribution. the 29.826136277384848 is the measure of average spread, meaning the mm values from the Bill length mm column are spread around the center 43.93607038123169 by approximately 5.461330998702134
+
+Bill Depth (in millimeters) Mean, Variance, Standard Deviation 
+bill_depth_mean: 17.14662756598241 
+bill_depth_variance: 3.904201828531997 
+bill_depth_sd: 1.9759053187164604 
+Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of 17.14662756598241 is the center of the distribution. the 3.904201828531997 is the measure of average spread, meaning the mm values from the Bill Depth mm column are spread around the center 17.14662756598241 by approximately 1.9759053187164604
+
+Flipper Length (in millimeters) Mean, Variance, Standard Deviation 
+flipper_length_mean: 200.97360703812316 
+flipper_length_variance: 197.14341900983285 
+flipper_length_sd: 14.040777008763897 
+Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of 200.97360703812316 is the center of the distribution. the 197.14341900983285 is the measure of average spread, meaning the mm values from the Flipper Length mm column are spread around the center 200.97360703812316 by approximately 14.040777008763897

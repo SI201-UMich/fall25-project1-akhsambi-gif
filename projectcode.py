@@ -23,8 +23,11 @@ def center_mean(list_dicts, quant_var):
     total = 0 
     count = 0 
     for row in list_dicts: 
-        total += float(row[quant_var])
-        count += 1 
+        if row[quant_var] != 'NA': 
+            total += float(row[quant_var])
+            count += 1 
+        else: 
+            continue 
     mean = total/count 
     return mean 
 
@@ -35,9 +38,12 @@ def variability_variance(list_dicts, quant_var):
     total_square = 0 
     count = 0 
     for row in list_dicts: 
-        value = float(row[quant_var])
-        total_square += (value - mean) ** 2 #had difficulty here, I had trouble writing out the numerator part of the variance equation to code, difficult to visualize but managed to get done independently. 
-        count += 1 
+        if row[quant_var] != 'NA': 
+            value = float(row[quant_var])
+            total_square += (value - mean) ** 2 #had difficulty here, I had trouble writing out the numerator part of the variance equation to code, difficult to visualize but managed to get done independently. 
+            count += 1 
+        else: 
+            continue 
     variance_final = total_square / (count - 1) 
     return variance_final
 
@@ -84,19 +90,28 @@ def write_to_txt(bill_length_dict, bill_depth_dict, flipper_length_dict):
         f.write('Bill Length (in millimeters) Mean, Variance, Standard Deviation \n') 
         for key, value in bill_length_dict.items(): 
             f.write(f'{key}: {value} \n')
-            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_length_dict['standard_deviation_val']} is the center of the distribution. the {bill_length_dict['variance_val']} is the measure of average spread, meaning the mm values from {bill_length_dict} are spread around the center {bill_length_dict['center_val']} by approximately {bill_length_dict['standard_deviation_val']}\n')
+        f.write(f"Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_length_dict['bill_length_mean']} is the center of the distribution. the {bill_length_dict['bill_length_variance']} is the measure of average spread, meaning the mm values from the Bill length mm column are spread around the center {bill_length_dict['bill_length_mean']} by approximately {bill_length_dict['bill_length_sd']}\n")
         
         f.write('\n')
         f.write('Bill Depth (in millimeters) Mean, Variance, Standard Deviation \n') 
         for key, value in bill_depth_dict.items(): 
             f.write(f'{key}: {value} \n')
-            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_depth_dict['standard_deviation_val']} is the center of the distribution. the {bill_depth_dict['variance_val']} is the measure of average spread, meaning the mm values from {bill_depth_dict} are spread around the center {bill_depth_dict['center_val']} by approximately {bill_depth_dict['standard_deviation_val']}\n')
+        f.write(f"Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_depth_dict['bill_depth_mean']} is the center of the distribution. the {bill_depth_dict['bill_depth_variance']} is the measure of average spread, meaning the mm values from the Bill Depth mm column are spread around the center {bill_depth_dict['bill_depth_mean']} by approximately {bill_depth_dict['bill_depth_sd']}\n")
         
         f.write('\n')
         f.write('Flipper Length (in millimeters) Mean, Variance, Standard Deviation \n') 
         for key, value in flipper_length_dict.items(): 
             f.write(f'{key}: {value} \n')
-            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {flipper_length_dict['standard_deviation_val']} is the center of the distribution. the {flipper_length_dict['variance_val']} is the measure of average spread, meaning the mm values from {flipper_length_dict} are spread around the center {flipper_length_dict['center_val']} by approximately {flipper_length_dict['standard_deviation_val']}\n')
+        f.write(f"Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {flipper_length_dict['flipper_length_mean']} is the center of the distribution. the {flipper_length_dict['flipper_length_variance']} is the measure of average spread, meaning the mm values from the Flipper Length mm column are spread around the center {flipper_length_dict['flipper_length_mean']} by approximately {flipper_length_dict['flipper_length_sd']}\n")
 
 
 
+def main(): 
+    filename = "penguins 3.csv"
+    data = read_penguin_data(filename)
+    bill_length_dict = bill_length_summary(data)
+    bill_depth_dict = bill_depth_summary(data)
+    flipper_length_dict = flipper_length_summary(data)
+    write_to_txt(bill_length_dict, bill_depth_dict, flipper_length_dict)
+if __name__ == "__main__":
+    main()

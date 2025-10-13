@@ -51,3 +51,26 @@ def standard_deviation(list_dicts, quant_var):
 #bill_length function with standard deviation, variance, and mean
 
 def bill_length_summary(list_dicts):
+    center_val = center_mean(list_dicts, "bill_length_mm")
+    variance_val = variability_variance(list_dicts, "bill_length_mm" )
+    standard_deviation_val = standard_deviation(list_dicts, "bill_length_mm")
+    bill_length_dict = {"bill_length_mean": center_val, "bill_length_variance": variance_val, "bill_length_sd": standard_deviation_val}  
+    return bill_length_dict
+
+#bill_depth function with standard deviation, variance, and mean
+
+def bill_depth_summary(list_dicts): 
+    center_val = center_mean(list_dicts, "bill_depth_mm")
+    variance_val = variability_variance(list_dicts, "bill_depth_mm" )
+    standard_deviation_val = standard_deviation(list_dicts, "bill_depth_mm")
+    bill_depth_dict = {"bill_depth_mean": center_val, "bill_depth_variance": variance_val, "bill_depth_sd": standard_deviation_val}  
+    return bill_depth_dict
+
+#flipper_length function with standard deviation, variance, and mean
+
+def flipper_length_summary(list_dicts): 
+    center_val = center_mean(list_dicts, "flipper_length_mm")
+    variance_val = variability_variance(list_dicts, "flipper_length_mm")
+    standard_deviation_val = standard_deviation(list_dicts, "flipper_length_mm")
+    flipper_length_dict = {"flipper_length_mean": center_val, "flipper_length_variance": variance_val, "flipper_length_sd": standard_deviation_val}  
+    return flipper_length_dict

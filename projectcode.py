@@ -23,12 +23,23 @@ def center_mean(list_dicts, quant_var):
     total = 0 
     count = 0 
     for row in list_dicts: 
-        total += row[quant_var]
+        total += float(row[quant_var])
         count += 1 
     mean = total/count 
     return mean 
 
-#Third function, variance calculation that calls on the mean computation function 2 
+#Third function, variance calculation that calls on the mean computation function 2: variance equation for reference: sum(xi - mean)^2/(sample size n - 1)
+
+def variability_variance(list_dicts, quant_var): 
+    mean = center_mean(list_dicts, quant_var)
+    total_square = 0 
+    count = 0 
+    for row in list_dicts: 
+        value = float(row[quant_var])
+        total_square += (value - mean) ** 2 #had difficulty here, I had trouble writing out the numerator part of the variance equation to code, difficult to visualize but managed to get done independently. 
+        count += 1 
+    variance_final = total_square / (count - 1) 
+    return variance_final
 
 #Fourth function, standard deviation calculation that calls on the variance computation function 3 
 

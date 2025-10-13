@@ -11,7 +11,7 @@ import math
 def read_penguin_data(filename):
     with open(filename, mode='r', newline='' ) as f:
         list_dicts = [] 
-        csvReader = csv.reader(f)
+        csvReader = csv.DictReader(f)
         next(csvReader)
         for row in csvReader: 
             list_dicts.append(row)
@@ -48,7 +48,7 @@ def standard_deviation(list_dicts, quant_var):
     standard_dev_result = math.sqrt(variance)
     return standard_dev_result
 
-#bill_length function with standard deviation, variance, and mean
+#Fifth function bill_length function with standard deviation, variance, and mean
 
 def bill_length_summary(list_dicts):
     center_val = center_mean(list_dicts, "bill_length_mm")
@@ -57,7 +57,7 @@ def bill_length_summary(list_dicts):
     bill_length_dict = {"bill_length_mean": center_val, "bill_length_variance": variance_val, "bill_length_sd": standard_deviation_val}  
     return bill_length_dict
 
-#bill_depth function with standard deviation, variance, and mean
+#Sixth function bill_depth function with standard deviation, variance, and mean
 
 def bill_depth_summary(list_dicts): 
     center_val = center_mean(list_dicts, "bill_depth_mm")
@@ -66,7 +66,7 @@ def bill_depth_summary(list_dicts):
     bill_depth_dict = {"bill_depth_mean": center_val, "bill_depth_variance": variance_val, "bill_depth_sd": standard_deviation_val}  
     return bill_depth_dict
 
-#flipper_length function with standard deviation, variance, and mean
+#Seventh function flipper_length function with standard deviation, variance, and mean
 
 def flipper_length_summary(list_dicts): 
     center_val = center_mean(list_dicts, "flipper_length_mm")
@@ -74,3 +74,29 @@ def flipper_length_summary(list_dicts):
     standard_deviation_val = standard_deviation(list_dicts, "flipper_length_mm")
     flipper_length_dict = {"flipper_length_mean": center_val, "flipper_length_variance": variance_val, "flipper_length_sd": standard_deviation_val}  
     return flipper_length_dict
+
+#Eigth function writing dict results from functions 5-7 into txt file 
+
+def write_to_txt(bill_length_dict, bill_depth_dict, flipper_length_dict):
+    with open('penguin_summary.txt', mode='w') as f: 
+        f.write('Penguin Data Set Center and Variability Summary\n')
+        f.write('\n')
+        f.write('Bill Length (in millimeters) Mean, Variance, Standard Deviation \n') 
+        for key, value in bill_length_dict.items(): 
+            f.write(f'{key}: {value} \n')
+            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_length_dict['standard_deviation_val']} is the center of the distribution. the {bill_length_dict['variance_val']} is the measure of average spread, meaning the mm values from {bill_length_dict} are spread around the center {bill_length_dict['center_val']} by approximately {bill_length_dict['standard_deviation_val']}\n')
+        
+        f.write('\n')
+        f.write('Bill Depth (in millimeters) Mean, Variance, Standard Deviation \n') 
+        for key, value in bill_depth_dict.items(): 
+            f.write(f'{key}: {value} \n')
+            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {bill_depth_dict['standard_deviation_val']} is the center of the distribution. the {bill_depth_dict['variance_val']} is the measure of average spread, meaning the mm values from {bill_depth_dict} are spread around the center {bill_depth_dict['center_val']} by approximately {bill_depth_dict['standard_deviation_val']}\n')
+        
+        f.write('\n')
+        f.write('Flipper Length (in millimeters) Mean, Variance, Standard Deviation \n') 
+        for key, value in flipper_length_dict.items(): 
+            f.write(f'{key}: {value} \n')
+            f.write(f'Based on the data collected from a sample size of n = 344 penguins from the penguins.csv data set, the mean of {flipper_length_dict['standard_deviation_val']} is the center of the distribution. the {flipper_length_dict['variance_val']} is the measure of average spread, meaning the mm values from {flipper_length_dict} are spread around the center {flipper_length_dict['center_val']} by approximately {flipper_length_dict['standard_deviation_val']}\n')
+
+
+

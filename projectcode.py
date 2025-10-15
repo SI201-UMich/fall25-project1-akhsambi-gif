@@ -8,7 +8,7 @@
 # 2. used AI to debug when I assigned the wrong f string variable that did not match the key names I gave to bill_length dict on line 65 (used center_val instead of bill_length_mean in write to text file on line 95)
 # not GenAI but used a website to look up different assert statements viable for unittests (link: https://understandingdata.com/posts/list-of-python-assert-statements-for-unit-tests/)
 # referred to the runestone lesson 20 to remind myself of correct unit test import and structure, used GenAI for simplified outline of unittest import and class creation (not done for the test functions, I basically asked for an easier format outline but in the end it ended up being the same as the last code block practice in lesson 20.8 on runestone) 
-# please don't make me write this many test cases again, it took me over 8 hours, im actually begging you. 
+
 
 import csv 
 import math 

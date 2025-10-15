@@ -3,6 +3,8 @@
 # uniqname: akhsambi 
 # email: akhsambi@umich.edu
 # Title of project: Calculating the Center and Variability of Penguin Data Set Measurements 
+#GenAI use: 
+
 
 import csv 
 import math 
@@ -115,3 +117,45 @@ def main():
     write_to_txt(bill_length_dict, bill_depth_dict, flipper_length_dict)
 if __name__ == "__main__":
     main()
+
+
+#Test Cases with Unit tests 
+
+import unittest
+from projectcode import (
+    read_penguin_data,
+    center_mean,
+    variability_variance,
+    standard_deviation,
+    bill_length_summary,
+    bill_depth_summary,
+    flipper_length_summary,
+    write_to_txt) 
+
+class TestPenguinFunctions(unittest.TestCase):
+
+    def test_read_penguin_data_type(self):
+        data = read_penguin_data("penguins 3.csv")
+        self.assertIsInstance(data, list)
+        self.assertIsInstance(data[0], dict)
+    def test_read_penguin_data_not_empty(self):
+        data = read_penguin_data("penguins 3.csv")
+        self.assertTrue(len(data) > 0)
+    #edge case 1 
+    #edge case 2 
+
+class TestCenterMean(unittest.TestCase):
+
+    def test_center_mean(self): #test case 1 
+        data = [{"bill_length_mm": "40.0"}, {"bill_length_mm": "42.0"}, {"bill_length_mm": "38.0"}]
+        self.assertEqual(center_mean(data, "bill_length_mm"), 40.0)
+    def test_center_mean_decimal(self): #test case 2 
+        data = [{"bill_length_mm": "39.5"}, {"bill_length_mm": "40.5"}, {"bill_length_mm": "41.0"}]
+        self.assertAlmostEqual(center_mean(data, "bill_length_mm"), 40.33, places=2)
+    def test_center_mean_with_NA(self): #edge test 1 
+        data = [{"bill_length_mm": "40.0"}, {"bill_length_mm": "NA"}, {"bill_length_mm": "42.0"}]
+        self.assertEqual(center_mean(data, "bill_length_mm"), 41.0)
+    def test_center_mean_one_value(self): #edge test 2 
+        data = [{"bill_length_mm": "NA"}, {"bill_length_mm": "44.0"}]
+        self.assertEqual(center_mean(data, "bill_length_mm"), 44.0)
+
